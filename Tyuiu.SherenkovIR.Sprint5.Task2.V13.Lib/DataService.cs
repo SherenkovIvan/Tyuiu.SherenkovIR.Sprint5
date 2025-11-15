@@ -1,4 +1,5 @@
-﻿using tyuiu.cources.programming.interfaces.Sprint5;
+﻿using System.Text;
+using tyuiu.cources.programming.interfaces.Sprint5;
 namespace Tyuiu.SherenkovIR.Sprint5.Task2.V13.Lib
 {
     public class DataService : ISprint5Task2V13
@@ -8,51 +9,57 @@ namespace Tyuiu.SherenkovIR.Sprint5.Task2.V13.Lib
             string tempPath = Path.GetTempPath();
             string filePath = Path.Combine(tempPath, "OutPutFileTask2.csv");
 
-            FileInfo fileInfo = new FileInfo(filePath);
-
-            if (fileInfo.Exists)
+            
+            if (File.Exists(filePath))
             {
                 File.Delete(filePath);
             }
 
-            int rows = matrix.GetUpperBound(0) + 1;
-            int cols = matrix.Length / rows;
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
 
+            
+            int[,] processedMatrix = (int[,])matrix.Clone();
+
+            
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    if (matrix[i, j] % 1 != 0)
+                    if (processedMatrix[i, j] % 2 != 0) 
                     {
-                        matrix[i, j] = 0;
+                        processedMatrix[i, j] = 0;
                     }
                 }
             }
 
-            string str = "";
+            
+            StringBuilder output = new StringBuilder();
 
             for (int i = 0; i < rows; i++)
             {
+                List<string> rowElements = new List<string>();
+
                 for (int j = 0; j < cols; j++)
                 {
-                    if (j != cols - 1)
-                    {
-                        str += matrix[i, j] + ";";
-                    }
-                    else
-                    {
-                        str += matrix[i, j];
-                    }
+                    rowElements.Add(processedMatrix[i, j].ToString());
                 }
-                if (i != rows - 1)
+
+                string row = string.Join(";", rowElements);
+
+               
+                if (i == 0)
                 {
-                    File.AppendAllText(filePath, str + Environment.NewLine);
+                    File.WriteAllText(filePath, row + Environment.NewLine);
                 }
                 else
                 {
-                    File.AppendAllText(filePath, str);
+                    File.AppendAllText(filePath, row + (i < rows - 1 ? Environment.NewLine : ""));
                 }
-                str = "";
+
+               
+                Console.WriteLine(row);
+                output.AppendLine(row);
             }
 
             return filePath;
