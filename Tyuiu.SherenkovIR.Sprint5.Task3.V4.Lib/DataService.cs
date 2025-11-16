@@ -7,13 +7,16 @@ namespace Tyuiu.SherenkovIR.Sprint5.Task3.V4.Lib
         public string SaveToFileTextData(int x)
         {
             string tempPath = Path.GetTempPath();
-            string filePath = Path.Combine($"{tempPath}", "OutPutFileTask3");
+            string filePath = Path.Combine(tempPath, "OutPutFileTask3.bin"); 
+
             double y = Math.Log((x + 1) / (x + 2));
-            double result = Math.Round(y, 3);
-            using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.OpenOrCreate), Encoding.UTF8))
+            double result = Math.Round(y, 3); 
+
+            using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.OpenOrCreate)))
             {
-                writer.Write(BitConverter.GetBytes(y));
+                writer.Write(result); 
             }
+
             return filePath;
         }
     }
