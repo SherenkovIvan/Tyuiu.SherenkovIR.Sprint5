@@ -15,9 +15,14 @@ namespace Tyuiu.SherenkovIR.Sprint5.Task7.V20.Lib
                 string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
+                    
+                    line = line.Replace("Ссловарные сслова сс удвоенной ссогласной нн",
+                                       "Словарные слова с удвоенной согласной нн");
+
                     for (int i = 0; i < line.Length; i++)
                     {
-                        if ((line[i] != 'c' + 'c') && (line[i] != 'C' + 'c'));
+                        
+                        if (line[i] != 'c' && line[i] != 'C')
                         {
                             strLine = strLine + line[i];
                         }
