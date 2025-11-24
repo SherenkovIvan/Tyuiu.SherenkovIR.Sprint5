@@ -8,8 +8,8 @@
         Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
         Console.WriteLine("***************************************************************************");
 
-        string path = $@"{Directory.GetCurrentDirectory()}\InPutDataFileTask7V20.txt";
-        string pathSaveFile = $@"{Directory.GetCurrentDirectory()}\OutPutDataFileTask7V20.txt";
+        string path = @"C:\Users\user\source\repos\Tyuiu.SherenkovIR.Sprint5\Tyuiu.SherenkovIR.Sprint5.Task7.V20\bin\Debug\net8.0\InPutDataFileTask7V20.txt";
+        string pathSaveFile = @"C:\Users\user\source\repos\Tyuiu.SherenkovIR.Sprint5\Tyuiu.SherenkovIR.Sprint5.Task7.V20\bin\Debug\net8.0\OutPutDataFileTask7V20.txt";
 
         Console.WriteLine("Данные находятся в файле " + path);
         Console.WriteLine("***************************************************************************");

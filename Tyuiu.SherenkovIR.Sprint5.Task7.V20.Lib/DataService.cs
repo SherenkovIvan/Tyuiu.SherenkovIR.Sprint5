@@ -7,18 +7,12 @@ namespace Tyuiu.SherenkovIR.Sprint5.Task7.V20.Lib
     {
         public string LoadDataAndSave(string path)
         {
-            string pathSaveFile = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask7V20.txt";
-
-            FileInfo fileinfo = new FileInfo(pathSaveFile);
-            bool fileExists = fileinfo.Exists;
-            if (fileExists)
-            {
-                File.Delete(pathSaveFile);
-            }
+            string tempPath = Path.GetTempPath();
+            string pathSaveFile = Path.Combine(tempPath, "OutPutDataFileTask7V11.txt");
             string strLine = "";
             using (StreamReader reader = new StreamReader(path))
             {
-                string line;
+                string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     for (int i = 0; i < line.Length; i++)
