@@ -15,7 +15,7 @@ namespace Tyuiu.SherenkovIR.Sprint5.Task6.V17.Lib
                 {
                     for (int i = 0; i < line.Length; i++)
                     {
-                        if (line[i] == ' ')
+                        if (line[i] == ' ' && line[i - 1] == ' ')
                         {
                             count++;
                         }

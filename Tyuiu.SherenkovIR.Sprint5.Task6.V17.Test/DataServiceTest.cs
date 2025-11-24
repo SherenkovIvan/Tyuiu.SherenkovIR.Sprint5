@@ -13,7 +13,7 @@ namespace Tyuiu.SherenkovIR.Sprint5.Task6.V17.Test
             string path = @"C:\Users\user\source\repos\Tyuiu.SherenkovIR.Sprint5\Tyuiu.SherenkovIR.Sprint5.Task6.V17\bin\Debug\net8.0\InPutDataFileTask6V17.txt";
 
             var res = ds.LoadFromDataFile(path);
-            int wait = 7;
+            int wait = 2;
             Assert.AreEqual(wait, res);
         }
         [TestMethod] 
